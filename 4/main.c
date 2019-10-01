@@ -1,6 +1,6 @@
 #include "h.h"
 
-list* add(list* l, char* arr) {
+list* add(list *l, char* arr) {
     if (l == NULL) {
         l = (list*)malloc(sizeof(list));
         l->next = NULL;

@@ -14,7 +14,6 @@ list* add(list *l, char* arr) {
 }
 
 int main() {
-    freopen("input.txt", "r", stdin);
     list* l = NULL;
     char arr[1025];
     gets(arr);

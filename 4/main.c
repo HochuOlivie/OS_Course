@@ -1,4 +1,4 @@
-#include "h.h"
+#include "main.h"
 
 list* add(list *l, char* arr) {
     if (l == NULL) {

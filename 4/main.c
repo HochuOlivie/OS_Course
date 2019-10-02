@@ -15,7 +15,7 @@ list* add(list *l, char* arr) {
 
 int main() {
     list* l = NULL;
-    char arr[1025];
+    char arr[2097153];
     gets(arr);
     while (arr[0] != '.') {
         l = add(l, arr);

@@ -20,7 +20,8 @@ void addV(Vector *v, il elem) {
 Vector v;
 
 void writeAllFile(int fd, int strLen, char *str) {
-    for (int i = 0; i < v.size; i++) {
+    int i;
+    for (i = 0; i < v.size; i++) {
         lseek(fd, v.data[i].index + 1, SEEK_SET);
         if (strLen < v.data[i].len) {
             str = realloc(str, v.data[i].len);

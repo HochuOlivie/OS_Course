@@ -90,6 +90,8 @@ int main() {
             }
             read(fd, str, v.data[num].len);
             fwrite(str, 1, v.data[num].len, stdout);
+            timeout.tv_sec = 5;
+            timeout.tv_usec = 0;
             ready_for_reading = select(fd, &input_set, NULL, NULL, &timeout);
             if (ready_for_reading)
                 scanf("%d", &num);

@@ -76,6 +76,8 @@ int main() {
                 i++;
             }
             printf("\n");
+            timeout.tv_sec = 5;
+            timeout.tv_usec = 0;
             ready_for_reading = select(fd, &input_set, NULL, NULL, &timeout);
             if (ready_for_reading)
                 scanf("%d", &num);

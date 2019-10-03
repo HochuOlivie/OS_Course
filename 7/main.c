@@ -47,7 +47,8 @@ int main() {
     il a0;
     a0.index = -1;
     int ll = 0;
-    for (int i = 0; i < buff.st_size; i++) {
+    int i = 0;
+    for (i = 0; i < buff.st_size; i++) {
         ll++;
         if (memFile[i] == '\n') {
             a0.len = ll;
@@ -69,7 +70,7 @@ int main() {
                 scanf("%d", &num);
                 continue;
             }
-            int i = v.data[num].index + 1;
+            i = v.data[num].index + 1;
             while (memFile[i] != '\n') {
                 printf("%c", memFile[i]);
                 i++;

@@ -79,7 +79,7 @@ int main() {
         int num; scanf("%d", &num);
         
         while (num != 0) {
-            if (num > v.size || num < 0) {
+            if (num >= v.size || num < 0) {
                 fprintf(stderr, "Error: no such line\n");
                 scanf("%d", &num);
                 continue;

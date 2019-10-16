@@ -5,7 +5,7 @@ void show_id() {
     printf("Effective User ID: %d\n", geteuid());
 }
 
-void open_file(const char* name) {
+void open_file(const char *name) {
     FILE* f = NULL;
     
     if(f = fopen(name, "r")) {
@@ -16,7 +16,6 @@ void open_file(const char* name) {
         perror("Could not open file");
     }
 }
-
 
 int main() {
 	show_id();

@@ -1,10 +1,18 @@
 #include "main.h"
 
-list* add(list *l, char* arr) {
+list* add(list *l, char *arr) {
     if (l == NULL) {
         l = (list*)malloc(sizeof(list));
         l->next = NULL;
-        memcpy(l->arr, arr, sizeof(char)*strlen(arr));
+        l->string = malloc(strlen(arr)*sizeof(char));
+        arr[strlen(arr) - 1] = '\0';
+//        memcpy(l->string, arr, sizeof(char)*strlen(arr));
+//        strcpy(l->string, arr);
+//        strncpy(l->string, arr, strlen(arr)*sizeof(char));
+        char *k = l->string;
+        for (char *i = arr; *i; i++) {
+            *k++ = *i;
+        }
         return l;
     }
     else {
@@ -14,14 +22,14 @@ list* add(list *l, char* arr) {
 }
 
 int main() {
-    list* l = NULL;
+    list *l = NULL;
     char arr[2097153];
-    gets(arr);
+    fgets(arr, 2097153, stdin);
     while (arr[0] != '.') {
         l = add(l, arr);
-        gets(arr);
+        fgets(arr, 2097153, stdin);
     }
     for (;l;l = l->next) {
-        puts(l->arr);
+        puts(l->string);
     }
 }

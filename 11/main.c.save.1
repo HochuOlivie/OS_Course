@@ -1,0 +1,22 @@
+#define SIGHUP  1   /* Hangup the process */ 
+#define SIGINT  2   /* Interrupt the process */ 
+#define SIGQUIT 3   /* Quit the process */ 
+#define SIGILL  4   /* Illegal instruction. */ 
+#define SIGTRAP 5   /* Trace trap. */ 
+#define SIGABRT 6   /* Abort. */
+#include<stdio.h> 
+#include<signal.h>
+
+
+void handle_sigint() {
+	printf("GOT SIGINT");
+
+}
+
+int main() {
+
+	
+
+}
+
+

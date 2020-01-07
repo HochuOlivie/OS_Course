@@ -19,14 +19,17 @@ void addV(Vector *v, il elem) {
 
 Vector v;
 
-void writeAllFile(char* str) {
+void writeAllFile(char *str) {
     printf("%s", str);
 }
 
 int main() {
     int fd;
     fd = open("input.txt", O_RDONLY);
-    
+    if (fd == -1) {
+	printf("Error: No such file or directory");
+	return -1;
+    }
     //    const long size = lseek(fd, 0, SEEK_END);
     //    lseek(fd, 0, SEEK_SET);
     struct stat buff;
@@ -38,11 +41,10 @@ int main() {
     
     FD_ZERO(&input_set);
     FD_SET(0, &input_set);
-    
     timeout.tv_sec = 5;
     timeout.tv_usec = 0;
     
-    char* memFile = mmap(NULL, buff.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+    char *memFile = (char*)mmap(NULL, buff.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
     
     il a0;
     a0.index = -1;
@@ -59,21 +61,7 @@ int main() {
     }
     a0.len = ll;
     addV(&v, a0);
-//--------------------------------------------------------------------
-    FILE *fp = fopen("output.txt", "w");
-    if (fp == NULL) printf("ERROR");
-    else {
-    int num;
-    for (num = 1; num < v.size - 1; num++) {
-        i = v.data[num].index + 1;
-        while (memFile[i] != '\n') {
-            fprintf(fp, "%c", memFile[i]);
-            i++;
-        }
-        fprintf(fp, "\n");
-    }
-    }
-//--------------------------------------------------------------------
+    
     ready_for_reading = select(fd, &input_set, NULL, NULL, &timeout);
     if (ready_for_reading) {
         int num; scanf("%d", &num);
@@ -104,6 +92,16 @@ int main() {
     else {
         writeAllFile(memFile);
     }
+    FILE *fp = fopen("output.txt", "w");
+    for (i = 0; i < v.size; i++) {
+	printf("%d", v.size);
+	int gogo = v.data[i].index + 1;
+        while (memFile[gogo] != '\n') {
+                printf("%c", memFile[i]);
+                gogo++;
+        }
+
+    } 
     exit(0);
 }
 

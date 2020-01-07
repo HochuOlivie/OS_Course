@@ -13,7 +13,7 @@ typedef struct il {
     int len;
 } il;
 typedef struct Vector {
-    il* data;
+    il *data;
     int cap;
     int size;
 } Vector;
